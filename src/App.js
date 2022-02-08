@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import { GoogleLogin } from 'react-google-login';
+// import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const googleResponse = (response) => {
+        console.log(response);
+
+    }
+
+
+    return (
+        <div>
+            <h1>hieu</h1>
+            <GoogleLogin className='editlogingg'
+                clientId={global.config.KEY}
+                onSuccess={googleResponse}
+                cookiePolicy={'single_host_origin'}
+                buttonText="Login with google"
+            ></GoogleLogin>
+        </div>
+    );
 }
 
 export default App;
