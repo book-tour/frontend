@@ -1,25 +1,24 @@
-import { GoogleLogin } from 'react-google-login';
-// import logo from './logo.svg';
+import React from "react";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+import Login from '../src/pages/Login'
+import Register from '../src/pages/Register'
+import Home from '../src/pages/Home'
 import './App.css';
 
 function App() {
 
-    const googleResponse = (response) => {
-        console.log(response);
-
-    }
-
-
     return (
-        <div>
-            <h1>hieu</h1>
-            <GoogleLogin className='editlogingg'
-                clientId={global.config.KEY}
-                onSuccess={googleResponse}
-                cookiePolicy={'single_host_origin'}
-                buttonText="Login with google"
-            ></GoogleLogin>
-        </div>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+        </Routes>
     );
 }
 
