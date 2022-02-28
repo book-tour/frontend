@@ -1,7 +1,7 @@
 import { GoogleLogin } from 'react-google-login';
 
 function Login(){
-    
+
     const googleResponse = (response) => {
         console.log(response);
 
@@ -9,6 +9,7 @@ function Login(){
 
     return(
         <>
+        
           <GoogleLogin className='editlogingg'
                 clientId={global.config.KEY}
                 onSuccess={googleResponse}
