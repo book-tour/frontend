@@ -7,7 +7,7 @@ import {
     Link
 } from "react-router-dom";
 import Login from '../src/components/Login'
-import Register from '../src/pages/Register'
+import Register from '../src/components/Register'
 import Home from '../src/pages/Home'
 import './App.css';
 
