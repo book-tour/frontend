@@ -1,15 +1,13 @@
 import React from "react";
 import {
-    BrowserRouter as Router,
     Routes,
-    Switch,
     Route,
-    Link
 } from "react-router-dom";
 import Login from '../src/pages/Login'
 import Register from '../src/pages/Register'
 import Home from '../src/pages/Home'
 import './App.css';
+import NotFound from "./components/not-found/NotFound";
 
 function App() {
 
@@ -18,6 +16,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/*" element={<NotFound />} />
         </Routes>
     );
 }
