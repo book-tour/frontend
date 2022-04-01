@@ -3,8 +3,8 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import Login from '../src/pages/Login'
-import Register from '../src/pages/Register'
+import Login from '../src/components/Login'
+import Register from '../src/components/Register'
 import Home from '../src/pages/Home'
 import './App.css';
 import NotFound from "./components/not-found/NotFound";

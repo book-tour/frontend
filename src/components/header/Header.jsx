@@ -16,7 +16,6 @@ const Header = () => {
 
     const [user, setUser] = useState(initUser)
 
-
     return (
         <header className="header__container">
             <div className="header__logo">
