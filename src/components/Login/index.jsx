@@ -29,7 +29,9 @@ function Login() {
                         </p>
                     </div>
                     <hr />
+                    <br />
                     <p>Or</p>
+                    <br />
                     <GoogleLogin
                         clientId={global.config.KEY}
                         onSuccess={googleResponse}
