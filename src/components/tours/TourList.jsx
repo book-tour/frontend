@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import TourItem from './tour_item/TourItem'
 import { FaEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import axios from 'axios'
 
+import { GlobalState } from '../../contexts/GlobalState';
 import './tour-list.css'
+
 const TourList = ({ heading, link }) => {
 
-    const [tours, setTours] = useState([])
-
-
-
-    useEffect(() => {
-        axios.get('https://doan1-tourapi.herokuapp.com/get/tour')
-            .then(res => {
-                const tourList = res.data.data;
-                tourList.listStartedDate = JSON.parse(tourList.listStartedDate);
-                setTours(res.data.data);
-            })
-            .catch(err => console.log({ err }));
-    }, [])
+    const { tourContext: { tours } } = useContext(GlobalState)
 
     return (
         <div className='tours-list'>

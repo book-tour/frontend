@@ -14,7 +14,7 @@ const Header = () => {
         thumbnail: 'https://i.vietgiaitri.com/2016/3/18/man-nhan-voi-than-hinh-cuc-chuan-cua-2-co-gai-dep-sexy-8175f6.jpg'
     }
 
-    const [user, setUser] = useState(initUser)
+    const [user, setUser] = useState(false)
 
     return (
         <header className="header__container">
@@ -33,12 +33,12 @@ const Header = () => {
                     </li>
 
                     <li className="nav__item hover-effect">
-                        <Link to="/" className="nav__item-link">
+                        <Link to="/destination" className="nav__item-link">
                             Điểm đến
                         </Link>
                     </li>
                     <li className="nav__item hover-effect">
-                        <Link to="/" className="nav__item-link">
+                        <Link to="/sales" className="nav__item-link">
                             Khuyến mãi
                         </Link>
                     </li>
@@ -79,7 +79,7 @@ const Header = () => {
 
                         ) : (
                             <li className="nav__item hover-effect">
-                                <Link to="/" className="nav__item-link">
+                                <Link to="/login" className="nav__item-link">
                                     Đăng nhập
                                 </Link>
                             </li>
