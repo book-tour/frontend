@@ -1,10 +1,9 @@
 import { GoogleLogin } from 'react-google-login';
-import './login.css'
-import { alpha, styled } from '@mui/material/styles';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography'
-
 import CustomTextField from '../elementComponent/CustomTextField'
+import { Link } from 'react-router-dom'
+
+
+import './login.css'
 
 function Login() {
 
@@ -12,20 +11,20 @@ function Login() {
         console.log(response);
 
     }
-   
+
     return (
         <div className="login-container">
             <div className='background-login'>
                 <div className='container-login'>
                     <p className='title-login'>Tugo</p>
                     <div className='input-info-login'>
-                        <CustomTextField label="Username" id="custom-css-outlined-input" required/>
+                        <CustomTextField label="Username" id="custom-css-outlined-input" required />
                         <CustomTextField label="Password" id="custom-css-outlined-input" type="password" required />
-                        <a href=''>Forgot password?</a>
+                        <Link to="/">Forgot password?</Link>
                         <button>Login</button>
                         <p>
                             <span>Don't have a account </span>
-                            <a href="/register">Register now.</a>
+                            <Link to="/register">Register now.</Link>
                         </p>
                     </div>
                     <hr />
@@ -39,7 +38,7 @@ function Login() {
                         buttonText="Login with google"
                         render={renderProps => (
                             <button onClick={renderProps.onClick} disabled={renderProps.disabled} className='google-login'>
-                                <img src={require('../../assets/google_logo.png')} alt="google" />
+                                <img src={require('../../assets/img/google_logo.png')} alt="google" />
                                 <span>Login with google</span>
                             </button>
                         )}

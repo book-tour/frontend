@@ -1,9 +1,6 @@
 import { GoogleLogin } from 'react-google-login';
-import { alpha, styled } from '@mui/material/styles';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography'
 import CustomTextField from '../elementComponent/CustomTextField'
-
+import { Link } from 'react-router-dom'
 import '../Login/login.css'
 
 
@@ -13,7 +10,7 @@ const Register = () => {
         console.log(response);
 
     }
-  
+
 
     return (
         <div className="login-container">
@@ -27,6 +24,10 @@ const Register = () => {
                         <CustomTextField label="Confirm Password" id="custom-css-outlined-input" type="password" required />
                         <br />
                         <button>Register</button>
+                        <p>
+                            <span>Adlready have a account </span>
+                            <Link to="/login">Login here.</Link>
+                        </p>
                         <br />
                     </div>
                     <hr />
@@ -38,7 +39,7 @@ const Register = () => {
                         buttonText="Login with google"
                         render={renderProps => (
                             <button onClick={renderProps.onClick} disabled={renderProps.disabled} className='google-login'>
-                                <img src={require('../../assets/google_logo.png')} alt="google" />
+                                <img src={require('../../assets/img/google_logo.png')} alt="google" />
                                 <span>Login with google</span>
                             </button>
                         )}
