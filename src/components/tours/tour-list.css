@@ -2,34 +2,6 @@
     margin-top: 24px;
 }
 
-.tour-list__heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.tour-list__title {
-    color: var(--heading-color);
-    font-size: 18px;
-    line-height: 26px;
-    font-weight: 540;
-    text-transform: uppercase;
-}
-
-.tour-list__view-all {
-    color: #333333;
-    font-size: 14px;
-    line-height: 22px;
-    display: flex;
-    align-items: center;
-}
-
-.tour-list__view-all svg {
-    color: var(--primary-color);
-    margin-right: 4px;
-    font-weight: 300;
-}
-
 .tour-list__list {
     margin-top: 12px;
 }

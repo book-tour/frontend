@@ -1,29 +1,51 @@
 import { useState, useEffect } from 'react'
+import { apiUrl } from '../utils/constants'
 import axios from 'axios'
 
 
 const TourContext = () => {
 
     const [tours, setTours] = useState([])
+    const [closetTours, setClosetTours] = useState([])
 
-    const getTours = async () => {
+    const getClosetTours = async () => {
         try {
-            const res = await axios.get('https://doan1-tourapi.herokuapp.com/get/tour')
-            const tourList = res.data.data;
-            console.log(tourList)
-            setTours(tourList);
+            const res = await axios.get(`${apiUrl}/listItemSummary`)
+            setClosetTours(res.data.data)
         }
         catch (error) {
             console.log({ error })
         }
     }
+
+    const getDetailTour = async (idTour, idSchedule) => {
+        try {
+            const res = await axios.get(`${apiUrl}/detailInfoItem?id_tour=${idTour}&id_schedule=${idSchedule}`)
+            console.log(res)
+            return {
+                success: true,
+                data: res.data.data
+            }
+        }
+        catch (error) {
+            console.log(error)
+
+            return {
+                success: false,
+                error,
+            }
+        }
+    }
+
     useEffect(() => {
-        getTours()
+        getClosetTours()
     }, [])
 
     return {
         tours,
-        getTours
+        closetTours,
+        getClosetTours,
+        getDetailTour
     }
 
 }

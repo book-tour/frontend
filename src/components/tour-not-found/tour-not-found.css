@@ -1,0 +1,35 @@
+.tour-not-found__container {
+    flex: 1;
+    border-top: 1px solid #ec219498;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tour-not-found__title {
+    font-size: 32px;
+    font-weight: 500;
+    -webkit-user-select: none;
+    color: #626262;
+    user-select: none;
+    cursor: default;
+}
+
+.tour-not-found__container a {
+    font-family: montserrat, sans-serif;
+    color: #626262;
+    text-decoration: none;
+    border: 2px solid;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 12px;
+    -webkit-transition: .2s all;
+    transition: .2s all;
+    user-select: none;
+}
+
+.tour-not-found__container a:hover {
+    color: #ff005a
+}
