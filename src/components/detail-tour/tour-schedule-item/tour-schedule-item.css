@@ -1,0 +1,85 @@
+.tour-schedule-item__container {
+    --circle-size: 24px;
+    --space-size: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.tour-schedule-item__container:before {
+    --border-size: 3px;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /* left: calc((var(--circle-size) + var(--space-size) - var(--border-size)) / 2); */
+    left: 11px;
+    border-left: var(--border-size) dotted #008FEA;
+}
+
+.tour-schedule__heading {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.tour-schedule__circle-outside {
+    width: var(--circle-size);
+    height: var(--circle-size);
+    margin-right: var(--space-size);
+    border-radius: 100%;
+    border: solid 1px #ed0080;
+    background-color: #fff;
+    padding: 4px;
+    z-index: 1;
+}
+
+.tour-schedule__circle-inner {
+    height: 100%;
+    border-radius: 100%;
+    background-color: #ed0080;
+}
+
+.tour-schedule__title {
+    flex: 1px;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tour-schedule__content {
+    margin-left: calc(var(--circle-size) + var(--space-size));
+    margin-top: 16px;
+    margin-bottom: 12px;
+    background-color: #F3F3F3;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333;
+    position: relative;
+}
+
+.tour-schedule__content:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    --border-size: 10px;
+    border-left: var(--border-size) solid transparent;
+    border-right: var(--border-size) solid transparent;
+    border-bottom: var(--border-size) solid #f3f3f3;
+    left: 20px;
+    top: 0;
+    transform: translateY(-100%);
+}
+
+.tour-schedule__session {
+    list-style: disc;
+    margin-left: 10px;
+    padding-left: 10px;
+}

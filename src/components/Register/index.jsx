@@ -1,7 +1,7 @@
 import { GoogleLogin } from 'react-google-login';
 import CustomTextField from '../elementComponent/CustomTextField'
 import { Link } from 'react-router-dom'
-import '../Login/login.css'
+import '../login/login.css'
 
 
 const Register = () => {

@@ -1,9 +1,7 @@
 import React, { useContext } from 'react'
-import TourItem from './tour_item/TourItem'
-import { FaEdit } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-
 import { GlobalState } from '../../contexts/GlobalState';
+import TourItem from './tour_item/TourItem'
+import HomeHeading from '../home-heading/HomeHeading';
 import './tour-list.css'
 
 const TourList = ({ heading, link }) => {
@@ -12,17 +10,7 @@ const TourList = ({ heading, link }) => {
 
     return (
         <div className='tours-list'>
-            <div className='tour-list__heading'>
-                <h2 className='tour-list__title'>
-                    {heading || 'Tour Trong Nước'}
-                </h2>
-
-                <Link to={link || '/'} className='tour-list__view-all hover-effect-color'>
-                    <FaEdit />
-                    <span>Xem tất cả</span>
-                </Link>
-
-            </div>
+            <HomeHeading heading={heading} link={link} />
             <div className="tour-list__list">
                 <div className='row'>
                     {

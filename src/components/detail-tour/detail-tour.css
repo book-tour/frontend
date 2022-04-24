@@ -1,0 +1,221 @@
+.detail-tour-container {
+    margin-top: 12px;
+    padding-top: 40px;
+    border-top: 1px solid #ec219498;
+}
+
+.tour__title {
+    font-size: 28px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #333;
+}
+
+.tour__information {
+    margin-top: 40px;
+}
+
+.tour-thumbnails-slider {
+    width: 100%;
+}
+
+.tour-thumbnail-slide__image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover !important;
+}
+
+.tour-information-content {
+    margin-top: 42px;
+}
+
+.tour-content__heading {
+    display: flex;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.tour-content__heading svg {
+    color: var(--primary-color);
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.tour-content__heading h3 {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 700;
+    color: #333;
+}
+
+.tour-content__main {
+    margin-top: 8px;
+}
+
+.tour-content__hightlight table td {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 700;
+    color: #555;
+    padding: 4px;
+    font-family: 'Roboto'
+}
+
+.tour-content__hightlight table td:first-child {
+    width: 20%;
+}
+
+.tour-content__description span {
+    font-style: italic;
+    font-size: 14px;
+    line-height: 22px;
+    color: #333;
+    text-align: justify;
+    /* font-family: 'Arial, Helvetica, sans-serif'; */
+}
+
+
+.tour-content__other-dates table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.tour-content__other-dates table thead th {
+    border-bottom: 2px solid #ddd;
+    font-size: 14px;
+    line-height: 22px;
+    color: #333;
+    font-weight: 600;
+    padding-top: 12px;
+    padding-bottom: 8px;
+}
+
+.tour-content__other-dates table tbody td {
+    border-top: 1px solid #ddd;
+    padding-bottom: 16px;
+    padding-top: 12px;
+    text-align: center;
+}
+
+.other-dates__book {
+    background: linear-gradient(180deg, #ed0080 0, #be3b98 100%);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.tour__short-info {
+    border: solid 1px rgba(0, 0, 0, .15);
+    padding: 16px;
+    margin-bottom: 25px;
+    border-spacing: 0;
+}
+
+.tour__short-info thead th {
+    text-align: left;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ed0080;
+    font-weight: 700;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: solid 1px rgba(0, 0, 0, .15);
+}
+
+.tour__short-info tbody td {
+    margin-top: 10px;
+    padding: 12px 2px;
+    border-bottom: solid 1px rgba(0, 0, 0, .15);
+}
+
+.tour__short-info tbody tr td:first-child {
+    font-weight: 600;
+}
+
+.tour__short-info tbody tr:last-child td {
+    border: none;
+    padding-bottom: 0;
+}
+
+.tour__price {
+    padding: 16px;
+    background: linear-gradient(90deg, #ed0080 0, #be3b98 100%);
+    border-radius: 4px;
+    margin-bottom: 25px;
+
+}
+
+.tour__price-price {
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.tour__price-price span:first-child {
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.tour__price-price span:last-child {
+    font-size: 24px;
+    line-height: 36px;
+    margin-left: 8px;
+}
+
+.tour__price-start {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-top: 16px;
+}
+
+.tour__price .tour__action-book {
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: #008fea;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: all .3s linear;
+    border-radius: 5px;
+    margin-top: 16px;
+}
+
+.tour__price .tour__action-book:hover {
+    color: #008fea;
+    background: #fff;
+}
+
+.tour-detail__outline a {
+    width: 100%;
+    background: #F3F3F3;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 4px;
+    color: #333;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+}
+
+.tour-detail__outline a span {
+    margin-left: 8px;
+    flex: 1;
+}
+
+.tour-detail__outline a:hover {
+    color: var(--primary-color);
+
+}

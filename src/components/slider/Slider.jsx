@@ -40,8 +40,7 @@ const Slider = () => {
         <div className="slider" >
             <Fade
                 duration="10000"
-                indicators={true}
-                cssClass="slider-custome">
+                indicators={true}>
                 {
                     slides.map(slide => (
                         <div className="slide" key={slide._id}>

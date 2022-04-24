@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { FaEdit } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import HomeHeading from '../home-heading/HomeHeading'
 import DestinationItem from './destination-item/DestinationItem'
 
 import './destination-list.css'
@@ -27,17 +26,7 @@ const DestinationList = () => {
 
     return (
         <div className='destinations'>
-            <div className='destinations__heading'>
-                <h2 className='destinations__title'>
-                    Điểm đến hot
-                </h2>
-
-                <Link to='/' className='destinations__view-all hover-effect-color'>
-                    <FaEdit />
-                    <span>Xem tất cả</span>
-                </Link>
-
-            </div>
+            <HomeHeading heading={'Điểm đến hot'} link={'/destination'} />
             <div className="destinations__list">
                 <div className='row'>
                     {

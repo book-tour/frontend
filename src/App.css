@@ -14,14 +14,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-family: -apple-system,
         BlinkMacSystemFont,
-        'Segoe UI',
         'Roboto',
+        'Segoe UI',
         'Oxygen',
         'Ubuntu',
         'Cantarell',
         'Fira Sans',
         'Droid Sans',
-        'Muli',
+        'Mulish',
         'Helvetica Neue',
         sans-serif;
 }
@@ -34,8 +34,10 @@ a {
     text-decoration: none;
 }
 
-@import url('./grid.css');
 
+.hover-effect {
+    transition: all linear 0.2s;
+}
 
 .hover-effect:hover {
     background-color: #F1F1F1;
@@ -49,6 +51,15 @@ a {
     transform: translateX(5px);
 }
 
+.hover-effect-color {
+    transition: all 0.3 linear;
+}
+
 .hover-effect-color:hover {
     color: var(--primary-color);
 }
+
+
+@import url('./style/grid.css');
+
+@import url('./style/detail-tour-page.css');

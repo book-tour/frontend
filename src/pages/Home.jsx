@@ -4,6 +4,7 @@ import DestinationList from "../components/destinations/DestinationList"
 import Footer from "../components/footer/Footer"
 import Slider from "../components/slider/Slider"
 import SearchBar from "../components/search_bar/SearchBar"
+import ClosetTour from "../components/closet-tour/ClosetTour"
 
 
 function Home() {
@@ -15,7 +16,8 @@ function Home() {
                     <Header />
                     <Slider />
                     <SearchBar />
-                    <TourList />
+                    <ClosetTour />
+                    <TourList heading="Tour trong nước" />
                     <DestinationList />
                     <Footer />
                 </div>
