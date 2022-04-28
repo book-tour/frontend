@@ -1,1 +1,0 @@
-export const apiUrl = 'https://doan1-tourapi.herokuapp.com'

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import TourScheduleItem from './tour-schedule-item/TourScheduleItem';
 import { Link } from 'react-router-dom'
-
+import moment from 'moment'
 import { Fade } from 'react-slideshow-image';
 import { FaInfoCircle } from 'react-icons/fa';
 import { BsFillCalendarCheckFill } from 'react-icons/bs';
@@ -74,7 +74,7 @@ const DetailTour = ({ tour }) => {
                                             </tr>
                                             <tr>
                                                 <td>Khởi hành</td>
-                                                <td>{tour.infoTour.depart_date}</td>
+                                                <td>{moment(tour.infoTour.depart_date).utc().format('MM/DD/YYYY')}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -130,7 +130,7 @@ const DetailTour = ({ tour }) => {
                                                 tour.schedule.map((schedule, index) => (
                                                     <tr key={index}>
                                                         <td>{index + 1}</td>
-                                                        <td>{schedule.depart_date}</td>
+                                                        <td>{moment(schedule.depart_date).utc().format('MM/DD/YYYY')}</td>
                                                         <td>{schedule.hotel_feature}</td>
                                                         <td>Còn {schedule.max_member} chỗ</td>
                                                         <td>
@@ -171,7 +171,7 @@ const DetailTour = ({ tour }) => {
                                     </tr>
                                     <tr>
                                         <td>Khởi hành:</td>
-                                        <td>{tour.infoTour.depart_date}</td>
+                                        <td>{moment(tour.infoTour.depart_date).utc().format('MM/DD/YYYY')}</td>
                                     </tr>
                                     <tr>
                                         <td>Xuất phát:</td>
@@ -184,13 +184,13 @@ const DetailTour = ({ tour }) => {
                                 <p className="tour__price-price">
                                     <span>Giá từ</span>
                                     <span>
-                                        {tour.infoTour.adult} đ
+                                        {new Intl.NumberFormat('de-DE').format(tour.infoTour.adult)} đ
                                     </span>
                                 </p>
                                 <p className="tour__price-start">
-                                    {tour.infoTour.depart_date}
+                                    {moment(tour.infoTour.depart_date).utc().format('MM/DD/YYYY')}
                                 </p>
-                                <Link to={`/`} className="tour__action-book"> Đặt tour</Link>
+                                <Link to={`/${tour.infoTour.id}`} className="tour__action-book"> Đặt tour</Link>
                             </div>
 
                             <div className="tour-detail__outline">

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { apiUrl } from '../utils/constants'
 import axios from 'axios'
 
 
@@ -10,7 +9,7 @@ const TourContext = () => {
 
     const getClosetTours = async () => {
         try {
-            const res = await axios.get(`${apiUrl}/listItemSummary`)
+            const res = await axios.get(`${global.config.API}/listItemSummary`)
             setClosetTours(res.data.data)
         }
         catch (error) {
@@ -20,7 +19,7 @@ const TourContext = () => {
 
     const getDetailTour = async (idTour, idSchedule) => {
         try {
-            const res = await axios.get(`${apiUrl}/detailInfoItem?id_tour=${idTour}&id_schedule=${idSchedule}`)
+            const res = await axios.get(`${global.config.API}/detailInfoItem?id_tour=${idTour}&id_schedule=${idSchedule}`)
             console.log(res)
             return {
                 success: true,
@@ -36,6 +35,14 @@ const TourContext = () => {
             }
         }
     }
+    const getInfoTourPayment = async (idSchedule) => {
+        const response = await axios.get(`${global.config.API}/infoTourPayment/${idSchedule}`);
+        return response;
+    }
+    const login = async (data) => {
+        const response = await axios.post(`${global.config.API}/login`, data);
+        return response;
+    }
 
     useEffect(() => {
         getClosetTours()
@@ -45,7 +52,9 @@ const TourContext = () => {
         tours,
         closetTours,
         getClosetTours,
-        getDetailTour
+        getDetailTour,
+        login,
+        getInfoTourPayment
     }
 
 }

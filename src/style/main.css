@@ -411,8 +411,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
-.m-4 {
-  margin: 1rem;
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+.col-span-4 {
+  grid-column: span 4 / span 4;
 }
 .m-6 {
   margin: 1.5rem;
@@ -420,6 +426,36 @@ Ensure the default browser behavior of the `hidden` attribute.
 .m-12 {
   margin: 3rem;
 }
+.m-4 {
+  margin: 1rem;
+}
+.flex {
+  display: flex;
+}
+.table {
+  display: table;
+}
 .grid {
   display: grid;
+}
+.h-\[250px\] {
+  height: 250px;
+}
+.w-full {
+  width: 100%;
+}
+.w-\[400px\] {
+  width: 400px;
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.items-center {
+  align-items: center;
 }

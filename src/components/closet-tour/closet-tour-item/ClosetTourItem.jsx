@@ -5,7 +5,7 @@ import { IoPersonOutline } from 'react-icons/io5'
 import { ImClock } from 'react-icons/im'
 import { timeBetween } from '../../../utils/functions'
 import './closet-tour-item.css'
-
+import moment from 'moment'
 
 const ClosetTourItem = ({ tour }) => {
 
@@ -50,7 +50,9 @@ const ClosetTourItem = ({ tour }) => {
                             </div>
                             <div className="closet-tour-item__content-item">
                                 <AiOutlineCalendar />
-                                <span>Khởi hành: 18/04/2022</span>
+                                <span>Khởi hành:
+                                    {moment(tour.closestSchedule.depart_date).utc().format('MM/DD/YYYY')}
+                                </span>
                             </div>
                             <div className="closet-tour-item__content-item">
                                 <IoPersonOutline />
@@ -62,12 +64,12 @@ const ClosetTourItem = ({ tour }) => {
                                 {
                                     tour.infoTour.discount && (
                                         <div className="closet-tour-item__price-old">
-                                            <span>{tour.closestSchedule.adult} đ</span>
+                                            <span>{new Intl.NumberFormat('de-DE').format(tour.closestSchedule.adult)} đ</span>
                                         </div>
                                     )
                                 }
                                 <div className="closet-tour-item__price">
-                                    <span>{tour.closestSchedule.adult * (1 - tour.infoTour.discount / 100)} đ</span>
+                                    <span>{new Intl.NumberFormat('de-DE').format(tour.closestSchedule.adult * (1 - tour.infoTour.discount / 100))} đ</span>
                                 </div>
                             </div>
                         </div>
