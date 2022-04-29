@@ -10,28 +10,7 @@ import PaymentPage from '../components/payment/PaymentPage'
 
 
 const Payment = () => {
-    const { idSchedule } = useParams();
-    const navigate = useNavigate();
-    const [infoTour, setInfoTour] = useState({});
-    const [paymentInfo, setPaymentInfo] = useState({});
-
-    const {
-        tourContext: { getInfoTourPayment }
-    } = useContext(GlobalState)
-
-    useEffect(async () => {
-        try {
-            let data = await getInfoTourPayment(idSchedule)
-            console.log(data.data.data);
-            setInfoTour(data.data.data.infoTour)
-            setPaymentInfo(data.data.data.paymentInfo)
-        } catch (error) {
-            console.log(error);
-            navigate('../', { replace: true })
-        }
-    }, [])
-
-
+   
 
     return (
 

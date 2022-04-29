@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
-
+import api from '../services/api.service';
+import axios from 'axios';
 
 const TourContext = () => {
 
@@ -9,8 +9,8 @@ const TourContext = () => {
 
     const getClosetTours = async () => {
         try {
-            const res = await axios.get(`${global.config.API}/listItemSummary`)
-            setClosetTours(res.data.data)
+            const res = await api.get('/listItemSummary')
+            setClosetTours(res.data)
         }
         catch (error) {
             console.log({ error })
@@ -19,11 +19,11 @@ const TourContext = () => {
 
     const getDetailTour = async (idTour, idSchedule) => {
         try {
-            const res = await axios.get(`${global.config.API}/detailInfoItem?id_tour=${idTour}&id_schedule=${idSchedule}`)
+            const res = await api.get(`/detailInfoItem?id_tour=${idTour}&id_schedule=${idSchedule}`)
             console.log(res)
             return {
                 success: true,
-                data: res.data.data
+                data: res.data
             }
         }
         catch (error) {
@@ -36,13 +36,15 @@ const TourContext = () => {
         }
     }
     const getInfoTourPayment = async (idSchedule) => {
-        const response = await axios.get(`${global.config.API}/infoTourPayment/${idSchedule}`);
+        const response = await api.get(`/infoTourPayment/${idSchedule}`);
         return response;
     }
     const login = async (data) => {
-        const response = await axios.post(`${global.config.API}/login`, data);
+        const response = await api.post(`/login`, data);
         return response;
     }
+
+
 
     useEffect(() => {
         getClosetTours()

@@ -20,9 +20,9 @@ const PaymentPage = () => {
     useEffect(async () => {
         try {
             let data = await getInfoTourPayment(idSchedule)
-            console.log(data.data.data);
-            setInfoTour(data.data.data.infoTour)
-            setPaymentInfo(data.data.data.paymentInfo)
+            console.log(data);
+            setInfoTour(data.data.infoTour)
+            setPaymentInfo(data.data.paymentInfo)
         } catch (error) {
             console.log(error);
             navigate('../', { replace: true })
@@ -47,7 +47,7 @@ const PaymentPage = () => {
                             </div>
                             <div>
                                 <p>{infoTour.id}</p>
-                                <p>{infoTour.length.day +' ngày '+ infoTour.length.night +' đêm'}</p>
+                                {/* <p>{infoTour.length.day +' ngày '+ infoTour.length.night +' đêm'}</p> */}
                                 <p>{new Intl.NumberFormat('de-DE').format(paymentInfo.adult)}</p>
                                 <p>{moment(paymentInfo.depart_date).utc().format('MM/DD/YYYY')}</p>
                                 <p>{infoTour.position}</p>
