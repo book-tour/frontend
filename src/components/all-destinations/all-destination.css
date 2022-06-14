@@ -1,0 +1,14 @@
+.all-destination__container {
+    padding-top: 40px;
+}
+
+.all-destination__title {
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 42px;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}

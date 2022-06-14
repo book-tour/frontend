@@ -16,6 +16,7 @@
     margin-right: -4px;
 }
 
+
 .row.no-gutters {
     margin-left: 0;
     margin-right: 0;
@@ -24,6 +25,17 @@
 .col {
     padding-left: 4px;
     padding-right: 4px;
+}
+
+.row.vertical-gutters {
+    margin-top: -4px;
+    margin-bottom: -4px;
+}
+
+
+.row.vertical-gutters>.col {
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
 .row.no-gutters>.col {
@@ -149,6 +161,17 @@
     .col {
         padding-left: 8px;
         padding-right: 8px;
+    }
+
+    .row.vertical-gutters {
+        margin-top: -8px;
+        margin-bottom: -8px;
+    }
+
+
+    .row.vertical-gutters>.col {
+        padding-top: 8px;
+        padding-bottom: 8px;
     }
 
     .m-0 {
@@ -285,6 +308,17 @@
     .row.sm-gutter {
         margin-left: -5px;
         margin-right: -5px;
+    }
+
+    .row.vertical-gutters {
+        margin-top: -12px;
+        margin-bottom: -12px;
+    }
+
+
+    .row.vertical-gutters>.col {
+        padding-top: 12px;
+        padding-bottom: 12px;
     }
 
     .col {
@@ -448,6 +482,17 @@
     .wide .row.sm-gutter {
         margin-left: -5px;
         margin-right: -5px;
+    }
+
+    .wide .row.vertical-gutters {
+        margin-top: -8px;
+        margin-bottom: -8px;
+    }
+
+
+    .wide .row.vertical-gutters>.col {
+        padding-top: 8px;
+        padding-bottom: 8px;
     }
 
     .wide .col {

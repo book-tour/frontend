@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { RiArrowDownSLine } from 'react-icons/ri'
 import { FiLogOut } from 'react-icons/fi'
 import { CgProfile } from 'react-icons/cg'
@@ -15,6 +15,14 @@ const Header = () => {
     }
 
     const [user, setUser] = useState(false)
+
+    const navigate = useNavigate()
+
+    const navigateSales = (e) => {
+        e.preventDefault()
+
+        navigate('/tours', { state: { discount: true } })
+    }
 
     return (
         <header className="header__container">
@@ -33,12 +41,12 @@ const Header = () => {
                     </li>
 
                     <li className="nav__item hover-effect">
-                        <Link to="/destination" className="nav__item-link">
+                        <Link to="/destinations" className="nav__item-link">
                             Điểm đến
                         </Link>
                     </li>
                     <li className="nav__item hover-effect">
-                        <Link to="/sales" className="nav__item-link">
+                        <Link to="/sales" onClick={navigateSales} className="nav__item-link">
                             Khuyến mãi
                         </Link>
                     </li>

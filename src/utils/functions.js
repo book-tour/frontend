@@ -41,3 +41,7 @@ export const timeBetween = (date1, date2) => {
     }
 
 }
+
+export const formatNumber = (number) => {
+    return isNaN(number) ? "" : number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}

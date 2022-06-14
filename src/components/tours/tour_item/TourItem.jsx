@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom'
 import { AiOutlineClockCircle, AiOutlineCalendar } from 'react-icons/ai'
 import { IoPersonOutline } from 'react-icons/io5'
 import './tour-item.css'
+import { formatNumber } from '../../../utils/functions'
 
 const TourItem = ({ tour }) => {
 
 
-
+    const departDate = new Date(tour.depart_date)
 
     return (
         <div className="col l-3 m-6 c-12">
-            <Link to='#' className="tour-item">
+            <Link to={`/tours/detail/${tour.idTour}?idSchedule=${tour.idSchedule}`} className="tour-item">
                 <div className="tour-item-wrapper">
                     <div className="tour-item-thumbnail-wrapper">
                         <img src={tour.thumbnail} alt="tour-thumbnail" className="tour-item__thumbnail" />
@@ -29,16 +30,25 @@ const TourItem = ({ tour }) => {
                                 </div>
                                 <div className="tour-item__content-item">
                                     <AiOutlineCalendar />
-                                    <span>{tour.listStartedDate[0].start}</span>
+                                    <span>{`${departDate.getDay() + 1}/${departDate.getMonth() + 1}/${departDate.getFullYear()}`}</span>
                                 </div>
                                 <div className="tour-item__content-item">
                                     <IoPersonOutline />
-                                    <span> còn {tour.listStartedDate[0].max - tour.listStartedDate[0].registered} chỗ</span>
+                                    <span> còn {tour.seat_exist} chỗ</span>
                                 </div>
                             </div>
                             <div className="col l-6 m-12 c-12">
-                                <div className="tour-item__price">
-                                    <span>{tour.listStartedDate[0].price} đ</span>
+                                <div className="tour-item__price-container">
+                                    {
+                                        tour.discount !== 0 && (
+                                            <div className="tour-item__price-old">
+                                                <span>{tour.adult} đ</span>
+                                            </div>
+                                        )
+                                    }
+                                    <div className="tour-item__price">
+                                        <span>{formatNumber(tour.adult * (1 - tour.discount / 100))} đ</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

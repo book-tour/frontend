@@ -1,11 +1,13 @@
 import React, { createContext } from 'react'
 import TourContext from './TourContext'
+import DestinationContext from './DestinationContext'
 export const GlobalState = createContext()
 
 export const DataProvider = ({ children }) => {
 
     const globalState = {
-        tourContext: TourContext()
+        tour: TourContext(),
+        destination: DestinationContext(),
     }
     return (
         <GlobalState.Provider value={globalState}>

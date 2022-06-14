@@ -59,6 +59,14 @@ a {
     color: var(--primary-color);
 }
 
+.margin-header {
+    border-top: 1px solid #ec219498;
+}
+
+.red-text {
+    color: rgb(255, 17, 0);
+}
+
 
 @import url('./style/grid.css');
 

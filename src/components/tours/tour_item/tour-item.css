@@ -1,3 +1,8 @@
+.tour-item {
+    display: block;
+    margin-top: 12px;
+}
+
 .tour-item-wrapper {
     border: 1px solid transparent;
 }
@@ -73,7 +78,36 @@
     margin-left: 8px;
 }
 
+.tour-item__price-container {
+    display: flex;
+    height: 100%;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.tour-item__price-old {
+    font-size: 14px;
+    color: #bbbbbb;
+    text-decoration: line-through;
+}
+
 .tour-item__price {
+    font-size: 18px;
+    color: #e30051;
+    font-weight: 700;
+}
+
+@media (max-width: 1114px) {
+    .tour-item__price-container {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+
+/* .tour-item__price {
     color: var(--primary-color);
     font-weight: 700;
     font-size: 18px;
@@ -84,4 +118,4 @@
 
 .tour-item__price span {
     margin-top: auto;
-}
+} */

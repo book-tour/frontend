@@ -3,7 +3,7 @@ import TourList from "../components/tours/TourList"
 import DestinationList from "../components/destinations/DestinationList"
 import Footer from "../components/footer/Footer"
 import Slider from "../components/slider/Slider"
-import SearchBar from "../components/search_bar/SearchBar"
+import SearchBar from "../components/search-bar/SearchBar"
 import ClosetTour from "../components/closet-tour/ClosetTour"
 
 
@@ -17,7 +17,8 @@ function Home() {
                     <Slider />
                     <SearchBar />
                     <ClosetTour />
-                    <TourList heading="Tour trong nước" />
+                    <TourList heading="Tour từ Hà Nội" data={{ position: "Ha Noi" }} />
+                    <TourList heading="Tour từ TPHCM" data={{ position: "Ho Chi Minh" }} />
                     <DestinationList />
                     <Footer />
                 </div>

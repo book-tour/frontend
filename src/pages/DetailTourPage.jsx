@@ -12,21 +12,22 @@ const DetailTourPage = () => {
     const [tour, setTour] = useState(false)
     const [loading, setLoading] = useState(true)
     const {
-        tourContext: { getDetailTour }
+        tour: { getDetailTour }
     } = useContext(GlobalState)
+
     const { idTour } = useParams()
     const [query] = useSearchParams()
-    const idSchedule = query.get('id_schedule')
-
-
+    const idSchedule = query.get('idSchedule')
 
 
     useEffect(() => {
         const getDetail = async () => {
             const res = await getDetailTour(idTour, idSchedule)
-            console.log(res)
             if (res.success) {
-                setTour(res.data)
+                setTour({
+                    ...res.data,
+                    idSchedule
+                })
             }
             setLoading(false)
         }
@@ -56,5 +57,6 @@ const DetailTourPage = () => {
         </div>
     )
 }
+
 
 export default DetailTourPage

@@ -1,35 +1,20 @@
-import { useState, useEffect } from 'react'
 import { apiUrl } from '../utils/constants'
 import axios from 'axios'
 
 
 const TourContext = () => {
 
-    const [tours, setTours] = useState([])
-    const [closetTours, setClosetTours] = useState([])
-
-    const getClosetTours = async () => {
+    const getClosetTours = async (callback = () => { }) => {
         try {
             const res = await axios.get(`${apiUrl}/listItemSummary`)
-            setClosetTours(res.data.data)
-        }
-        catch (error) {
-            console.log({ error })
-        }
-    }
-
-    const getDetailTour = async (idTour, idSchedule) => {
-        try {
-            const res = await axios.get(`${apiUrl}/detailInfoItem?id_tour=${idTour}&id_schedule=${idSchedule}`)
-            console.log(res)
+            callback(res.data, null)
             return {
                 success: true,
                 data: res.data.data
             }
         }
         catch (error) {
-            console.log(error)
-
+            callback(null, error)
             return {
                 success: false,
                 error,
@@ -37,16 +22,51 @@ const TourContext = () => {
         }
     }
 
-    useEffect(() => {
-        getClosetTours()
-    }, [])
-
-    return {
-        tours,
-        closetTours,
-        getClosetTours,
-        getDetailTour
+    const getDetailTour = async (idTour, idSchedule) => {
+        try {
+            const res = await axios.get(`${apiUrl}/detailInfoItem`, {
+                params: {
+                    idTour,
+                    idSchedule
+                }
+            })
+            return {
+                success: true,
+                data: res.data.data
+            }
+        }
+        catch (error) {
+            return {
+                success: false,
+                error,
+            }
+        }
     }
 
+    const searchTours = async (data, callback = () => { }) => {
+        try {
+            const res = await axios.post(`${apiUrl}/search`, data)
+
+            callback(res.data, null)
+
+            return {
+                success: true,
+                data: res.data.data
+            }
+        }
+        catch (error) {
+            callback(null, error)
+            return {
+                success: false,
+                error,
+            }
+        }
+    }
+
+    return {
+        getClosetTours,
+        getDetailTour,
+        searchTours
+    }
 }
 export default TourContext

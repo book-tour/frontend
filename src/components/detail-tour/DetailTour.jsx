@@ -6,6 +6,7 @@ import { Fade } from 'react-slideshow-image';
 import { FaInfoCircle } from 'react-icons/fa';
 import { BsFillCalendarCheckFill } from 'react-icons/bs';
 import { FiMap } from 'react-icons/fi';
+import { formatNumber } from '../../utils/functions'
 import './detail-tour.css'
 
 const DetailTour = ({ tour }) => {
@@ -34,7 +35,7 @@ const DetailTour = ({ tour }) => {
     return (
         <div className="detail-tour-container" >
             <h2 className="tour__title">
-                {tour.infoTour.title}
+                {tour.title}
             </h2>
 
             <div className="tour__information">
@@ -44,7 +45,7 @@ const DetailTour = ({ tour }) => {
                             <Fade scale={0.4}
                                 duration="5000">
                                 {
-                                    tour.infoTour.listThumbnail.map((thumbnail, index) => (
+                                    tour.listThumbnail.map((thumbnail, index) => (
                                         <div className="tour-thumbnail-slide" key={index}>
                                             <img src={thumbnail} alt="thumbnail" className='tour-thumbnail-slide__image' />
                                         </div>
@@ -66,22 +67,22 @@ const DetailTour = ({ tour }) => {
                                         <tbody>
                                             <tr>
                                                 <td>Hành trình</td>
-                                                <td>{tour.infoTour.title}</td>
+                                                <td>{tour.title}</td>
                                             </tr>
                                             <tr>
                                                 <td>Lịch trình</td>
-                                                <td>{`${tour.infoTour.length.day} ngày ${tour.infoTour.length.night} đêm`}</td>
+                                                <td>{`${tour.length.day} ngày ${tour.length.night} đêm`}</td>
                                             </tr>
                                             <tr>
                                                 <td>Khởi hành</td>
-                                                <td>{tour.infoTour.depart_date}</td>
+                                                <td>{tour.depart_date}</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div className="tour-content__description">
                                     <span>
-                                        {tour.infoTour.description}
+                                        {tour.description}
                                     </span>
                                 </div>
                             </div>
@@ -97,7 +98,7 @@ const DetailTour = ({ tour }) => {
                             <div className="tour-content__main">
                                 <div className="tour-content__schedule">
                                     {
-                                        tour.infoTour.schedule.map((item, index) => (
+                                        tour.schedule.map((item, index) => (
                                             <TourScheduleItem key={index} item={item} />
                                         ))
                                     }
@@ -127,17 +128,17 @@ const DetailTour = ({ tour }) => {
 
                                         <tbody>
                                             {
-                                                tour.schedule.map((schedule, index) => (
+                                                tour.listSchedule.map((schedule, index) => (
                                                     <tr key={index}>
                                                         <td>{index + 1}</td>
                                                         <td>{schedule.depart_date}</td>
                                                         <td>{schedule.hotel_feature}</td>
-                                                        <td>Còn {schedule.max_member} chỗ</td>
                                                         <td>
-                                                            {schedule.adult}
+                                                            {formatNumber(schedule.adult)}
                                                         </td>
+                                                        <td>Còn {schedule.seat_exist} chỗ</td>
                                                         <td>
-                                                            <Link to={`/`} className="other-dates__book">
+                                                            <Link to={`/tour/booking?idTour=${tour.idTour}&idSchedule=${schedule.id}`} className="other-dates__book">
                                                                 Book
                                                             </Link>
                                                         </td>
@@ -156,26 +157,26 @@ const DetailTour = ({ tour }) => {
                                 <thead>
                                     <tr>
                                         <th colSpan="2" rowSpan="2">
-                                            {tour.infoTour.title}
+                                            {tour.title}
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Mã tour:</td>
-                                        <td>{tour.infoTour.id}</td>
+                                        <td>{tour.id}</td>
                                     </tr>
                                     <tr>
                                         <td>Thời gian:</td>
-                                        <td>{`${tour.infoTour.length.day} ngày ${tour.infoTour.length.night} đêm`}</td>
+                                        <td>{`${tour.length.day} ngày ${tour.length.night} đêm`}</td>
                                     </tr>
                                     <tr>
                                         <td>Khởi hành:</td>
-                                        <td>{tour.infoTour.depart_date}</td>
+                                        <td>{tour.depart_date}</td>
                                     </tr>
                                     <tr>
                                         <td>Xuất phát:</td>
-                                        <td>{tour.infoTour.position}</td>
+                                        <td>{tour.position}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -184,13 +185,13 @@ const DetailTour = ({ tour }) => {
                                 <p className="tour__price-price">
                                     <span>Giá từ</span>
                                     <span>
-                                        {tour.infoTour.adult} đ
+                                        {formatNumber(tour.money)} đ
                                     </span>
                                 </p>
                                 <p className="tour__price-start">
-                                    {tour.infoTour.depart_date}
+                                    {tour.depart_date}
                                 </p>
-                                <Link to={`/`} className="tour__action-book"> Đặt tour</Link>
+                                <Link to={`/tour/booking?idTour=${tour.idTour}&idSchedule=${tour.idSchedule}`} className="tour__action-book"> Đặt tour</Link>
                             </div>
 
                             <div className="tour-detail__outline">
