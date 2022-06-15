@@ -25,8 +25,8 @@ const DetailTourPage = () => {
             const res = await getDetailTour(idTour, idSchedule)
             if (res.success) {
                 setTour({
+                    idSchedule,
                     ...res.data,
-                    idSchedule
                 })
             }
             setLoading(false)
@@ -41,7 +41,7 @@ const DetailTourPage = () => {
     return (
         <div className="detail-tour-page-container">
             <div className="grid wide">
-                <div className={'detail-tour-page-wrapper'}>
+                <div className={'page-wrapper'}>
                     <Header />
                     {
                         tour ? (

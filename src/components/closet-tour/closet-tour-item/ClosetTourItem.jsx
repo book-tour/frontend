@@ -26,7 +26,7 @@ const ClosetTourItem = ({ tour }) => {
 
     return (
         <div className="col l-4 m-6 c-12">
-            <Link to={`/tours/detail/${tour.idTour}?id_schedule=${tour.idSchedule}`} className="closet-tour-item__container">
+            <Link to={`/tours/detail/${tour.idTour}`} className="closet-tour-item__container">
                 <div className="closet-tour-item__thumbnail-wrapper">
                     <img className="closet-tour-item__thumbnail" src={tour.thumbnail} alt={tour.title} />
                     <div className="closet-tour-item__info">

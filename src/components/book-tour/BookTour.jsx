@@ -1,52 +1,34 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import { formatNumber } from '../../utils/functions'
-import Payment from './payment/Payment'
+import { GlobalState } from './../../contexts/GlobalState'
+import LoadingPage from '../loading/LoadingPage'
 import './book-tour.css'
 
 
 const BookTour = () => {
+    const navigate = useNavigate()
 
     const { idTour, idSchedule } = useParams()
+    const { tour: { getTourPrice } } = useContext(GlobalState)
 
-    const [showPopup, setShowPopup] = useState(true)
+    const [loading, setLoading] = useState(true)
 
-    const [tour, setTour] = useState({
-        id: 1,
-        title: 'Du lịch Đà Nẵng - Huế - Thánh Địa La Vang - Động Phong Phong Nha từ Sài Gòn 2022 ',
-        length: {
-            day: 3,
-            night: 2,
-        },
-        thumbnail: "https://res.cloudinary.com/dhz4hr8dq/image/upload/v1648257873/doan1/tour/Da_Lat_City_n8srlv.jpg",
-        position: 'Hồ chí minh',
-        destination: 'Phong Nha Kẻ Bàng',
-        depart_date: '20/03/2023',
-        max: 20,
-        seat_exist: 15,
-        prices: {
-            adult: 1200000,
-            child: 100000,
-            small_child: 90000,
-            new_born: 1000,
-            hotel: 4000000,
-            hotel_feature: "Khách sạn 4*"
-        }
-    })
+
+    const [tour, setTour] = useState({})
 
     const [bookingData, setBookingData] = useState({
-        idTour,
-        idSchedule,
-        title: tour.title,
-        name: '',
+        id_tour: idTour,
+        id_schedule: idSchedule,
+        full_name: '',
         email: '',
         phone: '',
         adult: 1,
         child: 0,
         small_child: 0,
         new_born: 0,
-        hotel: 0,
-        totalPrice: tour.prices.adult
+        room: 0,
+        total_price: 0,
     })
 
     const checkOnlyNumber = (e) => {
@@ -76,30 +58,46 @@ const BookTour = () => {
 
     const handleSubmitForm = (e) => {
         e.preventDefault()
-        setShowPopup(true)
+        navigate('/tour/payment', {
+            state: {
+                bookingData,
+                tour
+            }
+        })
     }
 
     useEffect(() => {
-        const totalPrice = bookingData.adult * tour.prices.adult
-            + bookingData.child * tour.prices.child
-            + bookingData.small_child * tour.prices.small_child
-            + bookingData.new_born * tour.prices.new_born
-            + bookingData.hotel * tour.prices.hotel;
+        if (tour.prices) {
+            const total_price = bookingData.adult * tour.prices.adult
+                + bookingData.child * tour.prices.child
+                + bookingData.small_child * tour.prices.small_child
+                + bookingData.new_born * tour.prices.new_born
+                + bookingData.room * tour.prices.hotel;
 
-        setBookingData({
-            ...bookingData,
-            totalPrice
-        })
-
-    }, [tour.prices, bookingData.adult, bookingData.child, bookingData.small_child, bookingData.new_born, bookingData.hotel])
-
+            setBookingData({
+                ...bookingData,
+                total_price
+            })
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [tour.prices, bookingData.adult, bookingData.child, bookingData.small_child, bookingData.new_born, bookingData.room])
 
     useEffect(() => {
-        setBookingData(prev => ({
-            ...prev,
-            title: tour.title
-        }))
-    }, [tour.title])
+        const getInfoPrice = async () => {
+            const res = await getTourPrice(idTour, idSchedule)
+            if (res.success) {
+                setTour(res.data)
+            } else
+                alert('Something wrong!')
+            setLoading(false)
+        }
+
+        getInfoPrice()
+    }, [getTourPrice, idSchedule, idTour])
+
+
+    if (loading)
+        return <LoadingPage />
 
     return (
         <div className="book-tour__container margin-header">
@@ -117,7 +115,7 @@ const BookTour = () => {
                                 <tbody>
                                     <tr>
                                         <td>Mã tour</td>
-                                        <td>{tour.id}</td>
+                                        <td>{idTour}</td>
                                     </tr>
                                     <tr>
                                         <td>Thời gian</td>
@@ -125,10 +123,10 @@ const BookTour = () => {
                                     </tr>
                                     <tr>
                                         <td>Giá</td>
-                                        <td>{tour.prices.adult} đ</td>
+                                        <td>{formatNumber(tour.prices.adult)} đ</td>
                                     </tr>
                                     <tr>
-                                        <td>Ngày khỏi hành</td>
+                                        <td>Ngày khởi hành</td>
                                         <td>{tour.depart_date}</td>
                                     </tr>
                                     <tr>
@@ -194,12 +192,12 @@ const BookTour = () => {
                     <div className="row">
                         <div className="col l-4">
                             <div className="book-tour__form-group">
-                                <label htmlFor="name">
+                                <label htmlFor="full_name">
                                     Họ Tên <span className="red-text">*</span>:
                                 </label>
-                                <input type="text" required name="name" id="name"
+                                <input type="text" required name="full_name" id="full_name"
                                     maxLength='50'
-                                    value={bookingData.name} onChange={handleBookingDataChange}
+                                    value={bookingData.full_name} onChange={handleBookingDataChange}
                                 />
                             </div>
                         </div>
@@ -285,9 +283,9 @@ const BookTour = () => {
 
                         <div className="col l-3">
                             <div className="book-tour__form-group">
-                                <label htmlFor="new_born">Phòng đơn: </label>
-                                <input type="number" required name="hotel" id="hotel" min="0"
-                                    value={bookingData.hotel} onChange={handleBookingDataChange}
+                                <label htmlFor="room">Phòng đơn: </label>
+                                <input type="number" required name="room" id="room" min="0"
+                                    value={bookingData.room} onChange={handleBookingDataChange}
                                     onKeyPress={checkOnlyNumber}
                                 />
                             </div>
@@ -295,7 +293,7 @@ const BookTour = () => {
 
                         <div className="col l-12 m-12 c-12">
                             <div className="book-tour__form-total-price">
-                                <p>Tổng giá trị: <span>{formatNumber(bookingData.totalPrice)} đ</span></p>
+                                <p>Tổng giá trị: <span>{formatNumber(bookingData.total_price)} đ</span></p>
                             </div>
                         </div>
 
@@ -306,13 +304,6 @@ const BookTour = () => {
                 </form>
 
             </div>
-
-            {
-                showPopup && (
-                    <Payment bookingData={bookingData} closePopup={() => setShowPopup(false)} />
-                )
-            }
-
         </div>
     )
 }

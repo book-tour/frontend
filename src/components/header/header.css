@@ -5,9 +5,12 @@
     padding: 12px 0;
 }
 
-.header__logo-text {
-    font-size: 32px;
-    color: #000000;
+.header__logo-link {
+    display: flex;
+}
+
+.header__logo-link img{
+    width: 100px;
 }
 
 .nav__list {
@@ -39,7 +42,7 @@
 .nav__item-user span {
     font-size: 16px;
     color: #555555;
-    font-weight: 700;
+    font-weight: 900;
 
 }
 

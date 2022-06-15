@@ -45,3 +45,41 @@ export const timeBetween = (date1, date2) => {
 export const formatNumber = (number) => {
     return isNaN(number) ? "" : number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
+
+export const getCurrentDate = () => {
+    const currentDate = new Date();
+
+    return `Tháng ${getNumberStringInVietNamese(currentDate.getMonth() + 1)} ${currentDate.getDate()}, ${currentDate.getFullYear()}`
+
+}
+
+export const getNumberStringInVietNamese = (number) => {
+    switch (number) {
+        case 1:
+            return "Một"
+        case 2:
+            return "Hai"
+        case 3:
+            return "Ba"
+        case 4:
+            return "Bốn"
+        case 5:
+            return "Năm"
+        case 6:
+            return "Sáu"
+        case 7:
+            return "Bảy"
+        case 8:
+            return "Tám"
+        case 9:
+            return "Chín"
+        case 10:
+            return "Mười"
+        case 11:
+            return "Mười một"
+        case 12:
+            return "Mười hai"
+        default:
+            return 'NaN'
+    }
+}

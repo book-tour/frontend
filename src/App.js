@@ -12,8 +12,9 @@ import NotFound from "./components/not-found/NotFound";
 import DetailTourPage from "./pages/DetailTourPage";
 import BookingTourPage from "./pages/BookingTourPage"
 import AllToursPage from "./pages/AllToursPage"
-import './App.css';
 import AlllDestinationsPage from "./pages/AlllDestinationsPage";
+import PaymentPage from './pages/PaymentPage'
+import './App.css';
 
 function App() {
 
@@ -25,7 +26,8 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/tours/detail/:idTour" element={<DetailTourPage />} />
                 <Route path="/tours" element={<AllToursPage />} />
-                <Route path="/tour/booking" element={<BookingTourPage />} />
+                <Route path="/tour/booking/:idTour/:idSchedule" element={<BookingTourPage />} />
+                <Route path="/tour/payment" element={<PaymentPage />} />
                 <Route path="/destinations" element={<AlllDestinationsPage />} />
                 <Route path="/*" element={<NotFound />} />
             </Routes>

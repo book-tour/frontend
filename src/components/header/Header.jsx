@@ -5,6 +5,7 @@ import { RiArrowDownSLine } from 'react-icons/ri'
 import { FiLogOut } from 'react-icons/fi'
 import { CgProfile } from 'react-icons/cg'
 import { MdTour } from 'react-icons/md'
+import logo from '../../assets/img/logo.png'
 import './header.css'
 
 const Header = () => {
@@ -28,7 +29,7 @@ const Header = () => {
         <header className="header__container">
             <div className="header__logo">
                 <Link to="/" className="header__logo-link">
-                    <h1 className="header__logo-text">Tugo</h1>
+                    <img src={logo} alt="logo" />
                 </Link>
             </div>
 

@@ -9,7 +9,7 @@ const DestinationContext = () => {
     useEffect(() => {
         const getDestinations = async () => {
             try {
-                const res = await axios.get(`${apiUrl}/listDestination`)
+                const res = await axios.get(`${apiUrl}/destinations`)
                 setDestinations(res.data.data)
             }
             catch (error) {

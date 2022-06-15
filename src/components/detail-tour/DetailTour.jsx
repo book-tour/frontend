@@ -11,27 +11,8 @@ import './detail-tour.css'
 
 const DetailTour = ({ tour }) => {
 
-    const priceRef = useRef()
 
-    useEffect(() => {
-        console.log({
-            element: priceRef.current.offsetTop
-        })
-    }, [])
-
-    useEffect(() => {
-        const onScroll = (event) => {
-            const position = window.pageYOffset;
-            console.log(position)
-        }
-        window.removeEventListener('scroll', onScroll)
-        window.addEventListener('scroll', onScroll)
-
-        return () => {
-            window.removeEventListener('scroll', onScroll)
-        }
-    }, [])
-
+   
     return (
         <div className="detail-tour-container" >
             <h2 className="tour__title">
@@ -138,7 +119,7 @@ const DetailTour = ({ tour }) => {
                                                         </td>
                                                         <td>Còn {schedule.seat_exist} chỗ</td>
                                                         <td>
-                                                            <Link to={`/tour/booking?idTour=${tour.idTour}&idSchedule=${schedule.id}`} className="other-dates__book">
+                                                            <Link to={`/tour/booking/${tour.id}/${schedule.idSchedule}`} className="other-dates__book">
                                                                 Book
                                                             </Link>
                                                         </td>
@@ -181,7 +162,7 @@ const DetailTour = ({ tour }) => {
                                 </tbody>
                             </table>
 
-                            <div ref={priceRef} className="tour__price">
+                            <div className="tour__price">
                                 <p className="tour__price-price">
                                     <span>Giá từ</span>
                                     <span>
@@ -191,7 +172,7 @@ const DetailTour = ({ tour }) => {
                                 <p className="tour__price-start">
                                     {tour.depart_date}
                                 </p>
-                                <Link to={`/tour/booking?idTour=${tour.idTour}&idSchedule=${tour.idSchedule}`} className="tour__action-book"> Đặt tour</Link>
+                                <Link to={`/tour/booking/${tour.id}/${tour.idSchedule}`} className="tour__action-book"> Đặt tour</Link>
                             </div>
 
                             <div className="tour-detail__outline">
